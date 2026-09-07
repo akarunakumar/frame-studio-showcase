@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "frame-studio-interiors": {
+    "frame-studio-showcase": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frame-studio-interiors",
+            "outputPath": "dist/frame-studio-showcase",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -59,8 +59,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": { "buildTarget": "frame-studio-interiors:build:production" },
-            "development": { "buildTarget": "frame-studio-interiors:build:development" }
+            "production": { "buildTarget": "frame-studio-showcase:build:production" },
+            "development": { "buildTarget": "frame-studio-showcase:build:development" }
           },
           "defaultConfiguration": "development"
         },
