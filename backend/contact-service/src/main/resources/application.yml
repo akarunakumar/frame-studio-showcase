@@ -1,0 +1,83 @@
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  application:
+    name: contact-service
+
+  # File-based H2 database — persists to a file on disk, no separate
+  # database server to install, run, or pay for. Simple showcase only;
+  # the full version uses real PostgreSQL per service.
+  datasource:
+    url: jdbc:h2:file:${DB_FILE_PATH:./data/contact}
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+
+  # LOCAL/TESTING ONLY — lets you browse saved enquiries in a browser
+  # at /h2-console. Disable this (set to false, or remove entirely)
+  # before deploying anywhere public — an open database browser is a
+  # real security risk on a live site.
+  #
+  # web-allow-others is set true because, when running inside Docker,
+  # the browser's request arrives at the container from Docker's
+  # internal network rather than literal 127.0.0.1, which H2's
+  # stricter "false" setting otherwise blocks even for genuinely
+  # local access. Safe here only because port 8090 isn't exposed
+  # beyond your own machine — never do this on a public server.
+  h2:
+    console:
+      enabled: ${H2_CONSOLE_ENABLED:true}
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: false
+    show-sql: false
+
+  # SMTP is entirely optional — leave blank and the app still works,
+  # it just won't send email notifications (enquiries are still saved).
+  mail:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:4200}
+  mail:
+    from: ${MAIL_FROM:no-reply@framestudiointeriors.com}
+    notify-address: ${NOTIFY_EMAIL:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,mappings
+  endpoint:
+    health:
+      show-details: always
+  # Spring Boot auto-checks SMTP connectivity for health status by
+  # default, which fails (and drags down overall health) when SMTP
+  # is intentionally left unconfigured. Since email is optional here,
+  # don't let it affect the health check.
+  health:
+    mail:
+      enabled: false
+
+logging:
+  level:
+    root: INFO
+    com.framestudio.contact: DEBUG

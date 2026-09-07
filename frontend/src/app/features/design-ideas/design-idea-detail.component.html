@@ -1,0 +1,22 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Design idea</span>
+  <h1>{{ displayTitle }}</h1>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <img class="fsi-idea-detail__cover" [src]="coverImage" [alt]="displayTitle" loading="lazy" />
+    <p>
+      Full description, tags, and related projects are populated from
+      content-service once this idea is published (Phase 3).
+    </p>
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Like this direction?</h2>
+    <p>Tell us which elements you'd like to bring into your own space.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

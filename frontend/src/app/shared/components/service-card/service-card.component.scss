@@ -1,0 +1,30 @@
+.fsi-service-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-top: 1px solid var(--fsi-line);
+  padding-top: var(--fsi-space-2);
+}
+
+.fsi-service-card__media {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  margin-bottom: var(--fsi-space-2);
+
+  img,
+  .fsi-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.fsi-service-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.fsi-service-card p {
+  font-size: var(--fsi-size-small);
+  margin-bottom: 0;
+}

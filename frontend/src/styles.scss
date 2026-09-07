@@ -1,0 +1,381 @@
+@use "./styles/tokens" as tokens;
+
+// -------------------------------------------------
+// Reset
+// -------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--fsi-plaster);
+  color: var(--fsi-ink);
+  font-family: var(--fsi-font-body);
+  font-size: var(--fsi-size-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fsi-font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 var(--fsi-space-2);
+  color: var(--fsi-ink);
+}
+
+h1 {
+  font-size: var(--fsi-size-display-xl);
+}
+h2 {
+  font-size: var(--fsi-size-display-lg);
+}
+h3 {
+  font-size: var(--fsi-size-display-md);
+}
+
+p {
+  max-width: 62ch; // keep body copy under ~80 characters per line
+  margin: 0 0 var(--fsi-space-3);
+  color: var(--fsi-ink-soft);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+// -------------------------------------------------
+// Accessibility floor
+// -------------------------------------------------
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--fsi-brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// -------------------------------------------------
+// Shared building blocks used across feature pages
+// -------------------------------------------------
+.fsi-container {
+  @include tokens.fsi-container;
+}
+
+.fsi-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fsi-space-1);
+  padding: 0.85rem 1.75rem;
+  font-size: var(--fsi-size-body);
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: var(--fsi-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &--primary {
+    background: var(--fsi-ink);
+    color: var(--fsi-paper);
+
+    &:hover {
+      background: var(--fsi-brass);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--fsi-ink);
+    border-color: var(--fsi-ink);
+
+    &:hover {
+      border-color: var(--fsi-brass);
+      color: var(--fsi-brass);
+    }
+  }
+}
+
+.fsi-eyebrow {
+  // Deliberately a plain small label, not tracked-out ALL CAPS —
+  // see frontend-design skill guidance on avoiding template chrome.
+  display: block;
+  font-size: var(--fsi-size-small);
+  color: var(--fsi-brass);
+  margin-bottom: var(--fsi-space-1);
+}
+
+// Placeholder photography treatment: used until a real project photo
+// is set from the admin. A soft brass gradient panel reads as an
+// intentional material swatch rather than a broken/missing image.
+.fsi-photo-placeholder {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--fsi-forest) 0%, var(--fsi-ink) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--fsi-space-2);
+  color: var(--fsi-paper);
+  font-family: var(--fsi-font-display);
+  font-size: var(--fsi-size-body);
+}
+
+.page-placeholder {
+  @include tokens.fsi-container;
+  padding-block: var(--fsi-space-6);
+
+  .phase-note {
+    color: var(--fsi-ink-soft);
+    font-style: italic;
+  }
+}
+
+// -------------------------------------------------
+// Section + grid utilities shared across public pages
+// -------------------------------------------------
+.fsi-section {
+  padding-block: var(--fsi-space-6);
+
+  &--paper {
+    background: var(--fsi-paper);
+  }
+
+  &--dark {
+    background: var(--fsi-ink);
+    color: var(--fsi-paper);
+
+    p {
+      color: rgba(251, 249, 245, 0.75);
+    }
+
+    h2,
+    h3 {
+      color: var(--fsi-paper);
+    }
+  }
+}
+
+.fsi-section__more {
+  display: inline-block;
+  margin-top: var(--fsi-space-3);
+  font-size: var(--fsi-size-small);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--fsi-ink);
+  border-bottom: 1px solid var(--fsi-brass);
+
+  &:hover {
+    color: var(--fsi-brass);
+  }
+}
+
+.fsi-grid {
+  display: grid;
+  gap: var(--fsi-space-4);
+  grid-template-columns: 1fr;
+
+  &--2 {
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &--3 {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &--4 {
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+
+.fsi-button--on-dark {
+  border-color: var(--fsi-paper);
+  color: var(--fsi-paper);
+
+  &:hover {
+    border-color: var(--fsi-brass);
+    color: var(--fsi-brass-soft);
+  }
+}
+
+.fsi-photo-placeholder--tall {
+  aspect-ratio: 3 / 4;
+}
+
+// -------------------------------------------------
+// Trust card — quiet hairline, not a shadow-card
+// -------------------------------------------------
+.fsi-trust-card {
+  border-top: 2px solid var(--fsi-brass);
+  padding-top: var(--fsi-space-2);
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    font-size: var(--fsi-size-small);
+    margin-bottom: 0;
+  }
+}
+
+// -------------------------------------------------
+// Consultation CTA band — reused on Home, About, Services, etc.
+// -------------------------------------------------
+.fsi-cta-band {
+  background: var(--fsi-forest);
+  color: var(--fsi-paper);
+}
+
+.fsi-cta-band__inner {
+  @include tokens.fsi-container;
+  padding-block: var(--fsi-space-6);
+  text-align: left;
+
+  h2 {
+    color: var(--fsi-paper);
+  }
+
+  p {
+    color: rgba(251, 249, 245, 0.75);
+    margin-bottom: var(--fsi-space-3);
+  }
+}
+
+// -------------------------------------------------
+// Page hero — reused at the top of every inner public page
+// -------------------------------------------------
+.fsi-page-hero {
+  @include tokens.fsi-container;
+  padding-block: var(--fsi-space-6) var(--fsi-space-5);
+  border-bottom: 1px solid var(--fsi-line);
+
+  h1 {
+    max-width: 34rem;
+  }
+}
+
+.fsi-page-hero__lead {
+  font-size: var(--fsi-size-body-lg);
+  max-width: 42rem;
+}
+
+// -------------------------------------------------
+// Detail-page building blocks (services, projects, design ideas)
+// -------------------------------------------------
+.fsi-plain-list {
+  list-style: none;
+  margin: 0 0 var(--fsi-space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--fsi-space-1);
+
+  li {
+    padding-left: var(--fsi-space-2);
+    position: relative;
+    color: var(--fsi-ink-soft);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      background: var(--fsi-brass);
+    }
+  }
+}
+
+.fsi-faq-list {
+  display: grid;
+  gap: var(--fsi-space-3);
+}
+
+.fsi-faq-item {
+  border-top: 1px solid var(--fsi-line);
+  padding-top: var(--fsi-space-2);
+
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    font-size: var(--fsi-size-small);
+    margin-bottom: 0;
+  }
+}
+
+// -------------------------------------------------
+// Filter chips (Projects, Design Ideas listing pages)
+// -------------------------------------------------
+.fsi-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fsi-space-1);
+  margin-bottom: var(--fsi-space-4);
+}
+
+.fsi-filter-chip {
+  background: transparent;
+  border: 1px solid var(--fsi-line);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: var(--fsi-size-small);
+  color: var(--fsi-ink-soft);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--fsi-brass);
+    color: var(--fsi-ink);
+  }
+
+  &--active {
+    background: var(--fsi-ink);
+    border-color: var(--fsi-ink);
+    color: var(--fsi-paper);
+  }
+}

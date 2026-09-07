@@ -1,0 +1,43 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Portfolio</span>
+  <h1>Our projects</h1>
+  <p class="fsi-page-hero__lead">
+    Residential and commercial interiors, from single rooms to complete
+    builds.
+  </p>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <div class="fsi-filter-bar" role="tablist" aria-label="Filter projects by category">
+      @for (filter of filters; track filter) {
+        <button
+          type="button"
+          role="tab"
+          class="fsi-filter-chip"
+          [class.fsi-filter-chip--active]="activeFilter() === filter"
+          [attr.aria-selected]="activeFilter() === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter }}
+        </button>
+      }
+    </div>
+
+    <div class="fsi-grid fsi-grid--3">
+      @for (project of filteredProjects(); track project.slug) {
+        <fsi-project-card [project]="project"></fsi-project-card>
+      } @empty {
+        <p>No projects match this filter yet.</p>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Have a project in mind?</h2>
+    <p>Tell us about your space and we'll get back to you with next steps.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Service</span>
+  <h1 class="fsi-service-detail__title">{{ displayTitle }}</h1>
+  <p class="fsi-page-hero__lead">
+    Full service copy and pricing guidance are populated from
+    content-service once an admin publishes this service (Phase 3).
+  </p>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container fsi-service-detail-grid">
+    <img
+      class="fsi-photo-placeholder--tall fsi-service-detail__cover"
+      [src]="coverImage"
+      [alt]="displayTitle"
+      loading="lazy"
+    />
+
+    <div>
+      <h2>What's included</h2>
+      <ul class="fsi-plain-list">
+        @for (benefit of benefits; track benefit) {
+          <li>{{ benefit }}</li>
+        }
+      </ul>
+
+      <h2>Common questions</h2>
+      <div class="fsi-faq-list">
+        @for (faq of faqs; track faq.question) {
+          <div class="fsi-faq-item">
+            <h3>{{ faq.question }}</h3>
+            <p>{{ faq.answer }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Want this for your space?</h2>
+    <p>Tell us about your project and we'll recommend next steps.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

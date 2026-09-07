@@ -1,0 +1,33 @@
+:host {
+  position: fixed;
+  right: var(--fsi-space-3);
+  bottom: var(--fsi-space-3);
+  z-index: 50;
+}
+
+// Hidden on small screens — the mobile action bar (Call / WhatsApp /
+// Get Quote) covers this job there instead (spec section 50).
+@media (max-width: 767px) {
+  :host {
+    display: none;
+  }
+}
+
+.fsi-whatsapp-fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--fsi-forest);
+  color: var(--fsi-paper);
+  text-decoration: none;
+  font-size: var(--fsi-size-small);
+  font-weight: 500;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(33, 30, 27, 0.25);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: var(--fsi-ink);
+  }
+}

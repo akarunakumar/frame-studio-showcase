@@ -1,0 +1,15 @@
+.fsi-service-detail-grid {
+  display: grid;
+  gap: var(--fsi-space-4);
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1.3fr;
+    align-items: start;
+  }
+}
+
+.fsi-service-detail__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

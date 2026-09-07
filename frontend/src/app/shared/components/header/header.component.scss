@@ -1,0 +1,131 @@
+@use "../../../../styles/tokens" as tokens;
+
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: block;
+}
+
+.fsi-header {
+  @include tokens.fsi-container;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fsi-space-3);
+  padding-block: var(--fsi-space-2);
+  background: var(--fsi-plaster);
+  border-bottom: 1px solid var(--fsi-line);
+}
+
+.fsi-logo {
+  font-family: var(--fsi-font-display);
+  font-size: 1.375rem;
+  text-decoration: none;
+  color: var(--fsi-ink);
+  white-space: nowrap;
+}
+
+// -------------------------------------------------
+// Mobile menu toggle (hamburger)
+// -------------------------------------------------
+.fsi-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  span {
+    display: block;
+    height: 2px;
+    background: var(--fsi-ink);
+    border-radius: 1px;
+  }
+
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
+
+// -------------------------------------------------
+// Nav
+// -------------------------------------------------
+.fsi-nav {
+  display: none;
+  font-size: var(--fsi-size-small);
+
+  a {
+    text-decoration: none;
+    color: var(--fsi-ink-soft);
+    padding-block: 0.25rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover,
+    &.active {
+      color: var(--fsi-ink);
+      border-color: var(--fsi-brass);
+    }
+  }
+
+  &--open {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fsi-space-2);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--fsi-plaster);
+    border-bottom: 1px solid var(--fsi-line);
+    padding: var(--fsi-space-3);
+  }
+
+  @media (min-width: 992px) {
+    display: flex;
+    gap: var(--fsi-space-3);
+    position: static;
+    background: none;
+    border: none;
+    padding: 0;
+    flex-direction: row;
+  }
+}
+
+.fsi-cta--mobile {
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
+
+.fsi-cta--desktop {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: inline-flex;
+  }
+}
+
+.fsi-cta {
+  flex-shrink: 0;
+  font-size: var(--fsi-size-small);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--fsi-paper);
+  background: var(--fsi-ink);
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--fsi-radius);
+  transition: background-color 0.2s ease;
+  text-align: center;
+
+  &:hover {
+    background: var(--fsi-brass);
+  }
+}

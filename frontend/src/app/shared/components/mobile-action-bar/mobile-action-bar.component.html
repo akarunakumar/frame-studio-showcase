@@ -1,0 +1,17 @@
+<div class="fsi-mobile-bar">
+  @if (companyPhone) {
+    <a [href]="callLink" class="fsi-mobile-bar__item">Call</a>
+  } @else {
+    <a routerLink="/contact" class="fsi-mobile-bar__item">Call</a>
+  }
+
+  @if (whatsappNumber) {
+    <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer" class="fsi-mobile-bar__item">
+      WhatsApp
+    </a>
+  } @else {
+    <a routerLink="/contact" class="fsi-mobile-bar__item">WhatsApp</a>
+  }
+
+  <a routerLink="/contact" class="fsi-mobile-bar__item fsi-mobile-bar__item--primary">Get Quote</a>
+</div>

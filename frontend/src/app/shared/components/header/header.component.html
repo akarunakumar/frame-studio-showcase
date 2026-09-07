@@ -1,0 +1,31 @@
+<header class="fsi-header">
+  <a class="fsi-logo" routerLink="/">Frame Studio Interiors</a>
+
+  <button
+    type="button"
+    class="fsi-menu-toggle"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="fsi-primary-nav"
+    aria-label="Toggle navigation menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="fsi-primary-nav" class="fsi-nav" [class.fsi-nav--open]="menuOpen()">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+    <a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a>
+    <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a>
+    <a routerLink="/design-ideas" routerLinkActive="active" (click)="closeMenu()">Design Ideas</a>
+    <a routerLink="/before-after" routerLinkActive="active" (click)="closeMenu()">Before &amp; After</a>
+    <a routerLink="/process" routerLinkActive="active" (click)="closeMenu()">Process</a>
+    <a routerLink="/testimonials" routerLinkActive="active" (click)="closeMenu()">Testimonials</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+    <a class="fsi-cta fsi-cta--mobile" routerLink="/contact" (click)="closeMenu()">Get Free Consultation</a>
+  </nav>
+
+  <a class="fsi-cta fsi-cta--desktop" routerLink="/contact">Get Free Consultation</a>
+</header>

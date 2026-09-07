@@ -1,0 +1,56 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">About us</span>
+  <h1>Interiors built around how you live, not a template.</h1>
+  <p class="fsi-page-hero__lead">
+    Frame Studio Interiors designs and executes residential and commercial
+    spaces with a focus on functionality, craftsmanship, and quality —
+    from a single room to a complete home.
+  </p>
+</section>
+
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container">
+    <div class="fsi-about-grid">
+      <img
+        class="fsi-photo-placeholder--tall fsi-about-photo"
+        src="https://images.unsplash.com/photo-1758448755856-01d3add0177b?w=900&q=80&auto=format&fit=crop"
+        alt="Frame Studio Interiors — living room design (demo photo)"
+        loading="lazy"
+      />
+      <div>
+        <h2>Our design philosophy</h2>
+        <p>
+          Good interior design starts with a question, not a mood board: how
+          will this room actually be used? We design around real routines —
+          cooking, working, hosting, unwinding — and let the aesthetic follow
+          from that, rather than the other way around.
+        </p>
+        <p>
+          The result is a space that looks considered because it is: every
+          material, finish, and fixture earns its place.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <div class="fsi-grid fsi-grid--4">
+      @for (pillar of pillars; track pillar.title) {
+        <div class="fsi-trust-card">
+          <h3>{{ pillar.title }}</h3>
+          <p>{{ pillar.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Ready to talk about your space?</h2>
+    <p>We'll walk you through how we work and what a project with us looks like.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

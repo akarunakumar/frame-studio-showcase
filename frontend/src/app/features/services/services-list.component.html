@@ -1,0 +1,30 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">What we do</span>
+  <h1>Interior design services</h1>
+  <p class="fsi-page-hero__lead">
+    From a single modular kitchen to a complete home or workplace,
+    planned and executed as one project.
+  </p>
+</section>
+
+@for (category of categories; track category.name; let isOdd = $odd) {
+  <section class="fsi-section" [class.fsi-section--paper]="isOdd">
+    <div class="fsi-container">
+      <fsi-section-heading [title]="category.name"></fsi-section-heading>
+
+      <div class="fsi-grid fsi-grid--4">
+        @for (service of category.services; track service.slug) {
+          <fsi-service-card [service]="service"></fsi-service-card>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Not sure which service you need?</h2>
+    <p>Tell us about your space and we'll recommend where to start.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+// =========================================================
+// Frame Studio Interiors — Design Tokens
+//
+// Design plan (Phase 2):
+//
+// Color — pulled from the physical materials of an interior:
+//   plaster walls, brass fixtures, deep planting greens, walnut ink.
+//   --fsi-plaster : #EAE3D6   warm putty background (not cliché cream)
+//   --fsi-paper   : #FBF9F5   card/surface white
+//   --fsi-ink     : #211E1B   warm near-black for text
+//   --fsi-brass   : #A97C3E   accent — fixtures, hardware, light
+//   --fsi-forest  : #3C4A3B   secondary dark — planting, upholstery
+//
+// Type — two families, clearly distinct roles:
+//   Display/serif "Fraunces" carries personality on headlines.
+//   "Work Sans" (grotesk-humanist) carries UI/body — legible, quiet.
+//
+// Layout — left-aligned editorial grid, generous whitespace,
+//   asymmetric hero split, quiet hairline dividers instead of
+//   shadow-heavy cards.
+// =========================================================
+
+:root {
+  // Color
+  --fsi-plaster: #eae3d6;
+  --fsi-paper: #fbf9f5;
+  --fsi-ink: #211e1b;
+  --fsi-ink-soft: #4a453e;
+  --fsi-brass: #a97c3e;
+  --fsi-brass-soft: #cba876;
+  --fsi-forest: #3c4a3b;
+  --fsi-line: rgba(33, 30, 27, 0.14);
+
+  // Type
+  --fsi-font-display: "Fraunces", "Iowan Old Style", serif;
+  --fsi-font-body: "Work Sans", -apple-system, "Segoe UI", sans-serif;
+
+  --fsi-size-display-xl: clamp(2.75rem, 2.1rem + 3vw, 4.75rem);
+  --fsi-size-display-lg: clamp(2.25rem, 1.85rem + 2vw, 3.25rem);
+  --fsi-size-display-md: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --fsi-size-body-lg: 1.125rem;
+  --fsi-size-body: 1rem;
+  --fsi-size-small: 0.875rem;
+
+  // Spacing (8px base scale)
+  --fsi-space-1: 0.5rem;
+  --fsi-space-2: 1rem;
+  --fsi-space-3: 1.5rem;
+  --fsi-space-4: 2rem;
+  --fsi-space-5: 3rem;
+  --fsi-space-6: 4.5rem;
+  --fsi-space-7: 6.5rem;
+
+  // Layout
+  --fsi-content-max: 1200px;
+  --fsi-radius: 2px; // deliberately near-square, not the rounded SaaS-card default
+}
+
+@mixin fsi-container {
+  max-width: var(--fsi-content-max);
+  margin-inline: auto;
+  padding-inline: var(--fsi-space-3);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--fsi-space-5);
+  }
+}

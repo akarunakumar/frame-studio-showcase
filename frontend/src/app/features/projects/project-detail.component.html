@@ -1,0 +1,57 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Project</span>
+  <h1>{{ displayName }}</h1>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <img
+      class="fsi-project-detail__cover"
+      [src]="coverImage"
+      [alt]="displayName"
+      loading="lazy"
+    />
+
+    <dl class="fsi-overview-list">
+      @for (item of overview; track item.label) {
+        <div>
+          <dt>{{ item.label }}</dt>
+          <dd>{{ item.value }}</dd>
+        </div>
+      }
+    </dl>
+  </div>
+</section>
+
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container fsi-story-grid">
+    @for (chapter of story; track chapter.title) {
+      <div>
+        <h3>{{ chapter.title }}</h3>
+        <p>{{ chapter.text }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <h2>Gallery</h2>
+    <div class="fsi-grid fsi-grid--4">
+      @for (stage of galleryStages; track stage.label) {
+        <div class="fsi-gallery-item">
+          <img [src]="stage.image" [alt]="stage.label" loading="lazy" />
+          <span>{{ stage.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Want a similar interior?</h2>
+    <p>Tell us what you liked about this project and we'll take it from there.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

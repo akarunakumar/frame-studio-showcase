@@ -1,0 +1,25 @@
+.fsi-testimonial-card {
+  margin: 0;
+  padding: var(--fsi-space-3);
+  background: var(--fsi-paper);
+  border-left: 3px solid var(--fsi-brass);
+}
+
+.fsi-testimonial-card__quote {
+  font-family: var(--fsi-font-display);
+  font-size: 1.15rem;
+  color: var(--fsi-ink);
+  margin-bottom: var(--fsi-space-2);
+}
+
+.fsi-testimonial-card__name {
+  display: block;
+  font-weight: 600;
+  font-size: var(--fsi-size-small);
+}
+
+.fsi-testimonial-card__meta {
+  display: block;
+  font-size: var(--fsi-size-small);
+  color: var(--fsi-ink-soft);
+}

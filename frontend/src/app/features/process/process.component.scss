@@ -1,0 +1,35 @@
+.fsi-process-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 42rem;
+
+  li {
+    display: flex;
+    gap: var(--fsi-space-3);
+    padding-block: var(--fsi-space-3);
+    border-top: 1px solid var(--fsi-line);
+
+    &:last-child {
+      border-bottom: 1px solid var(--fsi-line);
+    }
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    font-size: var(--fsi-size-small);
+    margin-bottom: 0;
+  }
+}
+
+.fsi-process-timeline__number {
+  font-family: var(--fsi-font-display);
+  font-size: 1.5rem;
+  color: var(--fsi-brass);
+  min-width: 2.5rem;
+  flex-shrink: 0;
+}

@@ -1,0 +1,20 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Client feedback</span>
+  <h1>Testimonials</h1>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container fsi-grid fsi-grid--2">
+    @for (testimonial of testimonials; track testimonial.clientName) {
+      <fsi-testimonial-card [testimonial]="testimonial"></fsi-testimonial-card>
+    }
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Ready to start your own project?</h2>
+    <p>Tell us about your space and we'll get back to you with next steps.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

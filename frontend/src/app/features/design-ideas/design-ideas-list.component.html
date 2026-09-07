@@ -1,0 +1,41 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Inspiration</span>
+  <h1>Design ideas</h1>
+  <p class="fsi-page-hero__lead">
+    Browse looks and directions across styles, to help shape what you
+    want for your own space.
+  </p>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container">
+    <div class="fsi-filter-bar" role="tablist" aria-label="Filter design ideas by category">
+      @for (category of categories; track category) {
+        <button
+          type="button"
+          role="tab"
+          class="fsi-filter-chip"
+          [class.fsi-filter-chip--active]="activeCategory() === category"
+          [attr.aria-selected]="activeCategory() === category"
+          (click)="setCategory(category)"
+        >
+          {{ category }}
+        </button>
+      }
+    </div>
+
+    <div class="fsi-grid fsi-grid--3">
+      @for (idea of filteredIdeas(); track idea.slug) {
+        <a class="fsi-idea-card" [routerLink]="['/design-ideas', idea.slug]">
+          <div class="fsi-idea-card__media">
+            <img [src]="idea.image" [alt]="idea.title" loading="lazy" />
+          </div>
+          <h3>{{ idea.title }}</h3>
+          <p>{{ idea.description }}</p>
+        </a>
+      } @empty {
+        <p>No design ideas in this category yet.</p>
+      }
+    </div>
+  </div>
+</section>

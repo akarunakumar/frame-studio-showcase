@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PHASE 1 PLACEHOLDER — only static routes are listed here.
+  Phase 6 adds a build-time or server-rendered sitemap generator that
+  pulls published slugs from project-service, content-service (services,
+  design-ideas) so new content appears automatically (spec section 45).
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://framestudiointeriors.com/</loc></url>
+  <url><loc>https://framestudiointeriors.com/about</loc></url>
+  <url><loc>https://framestudiointeriors.com/services</loc></url>
+  <url><loc>https://framestudiointeriors.com/projects</loc></url>
+  <url><loc>https://framestudiointeriors.com/design-ideas</loc></url>
+  <url><loc>https://framestudiointeriors.com/before-after</loc></url>
+  <url><loc>https://framestudiointeriors.com/process</loc></url>
+  <url><loc>https://framestudiointeriors.com/testimonials</loc></url>
+  <url><loc>https://framestudiointeriors.com/contact</loc></url>
+</urlset>

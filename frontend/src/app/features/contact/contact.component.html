@@ -1,0 +1,113 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Get in touch</span>
+  <h1>Tell us about your space</h1>
+  <p class="fsi-page-hero__lead">
+    Share a few details and we'll get back to you with next steps —
+    or reach us directly using the details alongside the form.
+  </p>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container fsi-contact-grid">
+    <div class="fsi-contact-info">
+      <h2>Contact details</h2>
+      <p class="fsi-contact-info__note">
+        <strong>Phone / WhatsApp:</strong> +91 96118 25120
+      </p>
+      <p class="fsi-contact-info__note">
+        Prefer to talk directly? Use the WhatsApp button in the corner
+        of the screen, or call us on the number above.
+      </p>
+    </div>
+
+    <div class="fsi-contact-form-card">
+      @if (submitted) {
+        <div class="fsi-contact-success" role="status">
+          <h2>Thanks — we've got your details.</h2>
+          <p>
+            We'll reach out shortly to talk through your project. In the
+            meantime you're welcome to message us directly on WhatsApp.
+          </p>
+        </div>
+      } @else {
+        <form [formGroup]="consultationForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="fsi-field-row">
+            <label class="fsi-field">
+              <span>Name *</span>
+              <input type="text" formControlName="name" />
+            </label>
+            <label class="fsi-field">
+              <span>Phone *</span>
+              <input type="tel" formControlName="phone" />
+            </label>
+          </div>
+
+          <div class="fsi-field-row">
+            <label class="fsi-field">
+              <span>Email</span>
+              <input type="email" formControlName="email" />
+            </label>
+            <label class="fsi-field">
+              <span>Location *</span>
+              <input type="text" formControlName="location" placeholder="Area, city" />
+            </label>
+          </div>
+
+          <div class="fsi-field-row">
+            <label class="fsi-field">
+              <span>Property type *</span>
+              <select formControlName="propertyType">
+                <option value="">Select…</option>
+                @for (type of propertyTypes; track type) {
+                  <option [value]="type">{{ type }}</option>
+                }
+              </select>
+            </label>
+            <label class="fsi-field">
+              <span>Property size</span>
+              <input type="text" formControlName="propertySize" placeholder="e.g. 1,400 sq ft" />
+            </label>
+          </div>
+
+          <label class="fsi-field">
+            <span>Interior requirement</span>
+            <textarea formControlName="requirement" rows="3"></textarea>
+          </label>
+
+          <div class="fsi-field-row">
+            <label class="fsi-field">
+              <span>Estimated budget</span>
+              <select formControlName="budget">
+                <option value="">Select…</option>
+                @for (range of budgetRanges; track range.value) {
+                  <option [value]="range.value">{{ range.label }}</option>
+                }
+              </select>
+            </label>
+            <label class="fsi-field">
+              <span>Preferred contact time</span>
+              <input type="text" formControlName="preferredContactTime" placeholder="e.g. weekday evenings" />
+            </label>
+          </div>
+
+          <label class="fsi-field">
+            <span>Message</span>
+            <textarea formControlName="message" rows="3"></textarea>
+          </label>
+
+          @if (consultationForm.invalid && consultationForm.touched) {
+            <p class="fsi-field-error">Please fill in the required fields marked with *.</p>
+          }
+
+          @if (submitError) {
+            <p class="fsi-field-error">{{ submitError }}</p>
+          }
+
+          <button type="submit" class="fsi-button fsi-button--primary" [disabled]="submitting">
+            {{ submitting ? 'Sending…' : 'Get Free Consultation' }}
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

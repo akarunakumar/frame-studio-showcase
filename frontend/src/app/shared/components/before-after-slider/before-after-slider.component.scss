@@ -1,0 +1,80 @@
+.fsi-ba-slider {
+  margin: 0;
+  position: relative;
+}
+
+.fsi-ba-slider__frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.fsi-ba-slider__pane {
+  position: absolute;
+  inset: 0;
+
+  img,
+  .fsi-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.fsi-ba-slider__pane--before {
+  clip-path: inset(0 calc(100% - var(--fsi-ba-position, 50%)) 0 0);
+}
+
+.fsi-ba-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--fsi-ba-position, 50%);
+  width: 2px;
+  background: var(--fsi-paper);
+  transform: translateX(-1px);
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--fsi-paper);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.fsi-ba-slider__range {
+  // Full-width, transparent, but real and accessible — sits directly
+  // over the image so drag/tap/keyboard all work the same way.
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  appearance: none;
+
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+figcaption {
+  padding-top: var(--fsi-space-2);
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    font-size: var(--fsi-size-small);
+    margin-bottom: 0;
+  }
+}

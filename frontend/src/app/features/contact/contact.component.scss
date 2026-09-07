@@ -1,0 +1,70 @@
+.fsi-contact-grid {
+  display: grid;
+  gap: var(--fsi-space-5);
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1.6fr;
+    align-items: start;
+  }
+}
+
+.fsi-contact-info__note {
+  font-size: var(--fsi-size-small);
+}
+
+.fsi-contact-form-card {
+  background: var(--fsi-paper);
+  padding: var(--fsi-space-4);
+  border-top: 3px solid var(--fsi-brass);
+}
+
+.fsi-field-row {
+  display: grid;
+  gap: var(--fsi-space-2);
+
+  @media (min-width: 560px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fsi-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: var(--fsi-space-2);
+  font-size: var(--fsi-size-small);
+  font-weight: 500;
+
+  input,
+  select,
+  textarea {
+    font-family: var(--fsi-font-body);
+    font-size: var(--fsi-size-body);
+    font-weight: 400;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--fsi-line);
+    background: var(--fsi-plaster);
+    border-radius: var(--fsi-radius);
+
+    &:focus {
+      outline: none;
+      border-color: var(--fsi-brass);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.fsi-field-error {
+  color: #9a3324;
+  font-size: var(--fsi-size-small);
+  margin-bottom: var(--fsi-space-2);
+}
+
+.fsi-contact-success {
+  h2 {
+    margin-bottom: var(--fsi-space-1);
+  }
+}

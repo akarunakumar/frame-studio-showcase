@@ -1,0 +1,24 @@
+<section class="fsi-page-hero">
+  <span class="fsi-eyebrow">Transformation</span>
+  <h1>Before &amp; after</h1>
+  <p class="fsi-page-hero__lead">
+    Drag the slider to compare — the same room, before a single
+    decision was made and after every one of them was carried out.
+  </p>
+</section>
+
+<section class="fsi-section">
+  <div class="fsi-container fsi-grid fsi-grid--3">
+    @for (entry of entries; track entry.title) {
+      <fsi-before-after-slider [entry]="entry"></fsi-before-after-slider>
+    }
+  </div>
+</section>
+
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Want this kind of transformation?</h2>
+    <p>Tell us about your space and we'll get back to you with next steps.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

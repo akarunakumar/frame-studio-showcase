@@ -1,0 +1,202 @@
+<!-- Hero -->
+<section class="fsi-hero">
+  <div class="fsi-container fsi-hero__inner">
+    <div class="fsi-hero__copy">
+      <h1>
+        We Frame Your<br />
+        Dream Space
+      </h1>
+      <p class="fsi-hero__subtitle">
+        Modular interiors at factory prices — 45-day execution,
+        10-year warranty, for homes, offices and commercial spaces.
+      </p>
+      <div class="fsi-hero__actions">
+        <a routerLink="/projects" class="fsi-button fsi-button--primary">Explore Our Projects</a>
+        <a routerLink="/contact" class="fsi-button fsi-button--outline">Get Free Consultation</a>
+      </div>
+    </div>
+    <div class="fsi-hero__panel" aria-hidden="true">
+      <span class="fsi-hero__panel-label">Frame Studio Interiors</span>
+    </div>
+  </div>
+</section>
+
+<!-- About / brand -->
+<section class="fsi-section">
+  <div class="fsi-container fsi-brand">
+    <p class="fsi-brand__lead">
+      Design-led interiors with a focus on functionality, craftsmanship,
+      quality and personalized spaces.
+    </p>
+    <a routerLink="/about" class="fsi-button fsi-button--outline">Our Story</a>
+  </div>
+</section>
+
+<!-- Pricing — real figures provided by the business owner -->
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="Modular interiors at factory prices"
+      title="Starting prices"
+      subtitle="Exact pricing depends on your layout and finishes — these are starting points for a free consultation."
+    ></fsi-section-heading>
+
+    <div class="fsi-pricing-grid">
+      @for (tier of pricingTiers; track tier.label) {
+        <div class="fsi-pricing-card">
+          <span class="fsi-pricing-card__label">{{ tier.label }}</span>
+          <span class="fsi-pricing-card__price">Starting at {{ tier.startingPrice }}</span>
+        </div>
+      }
+    </div>
+
+    <p class="fsi-pricing-note">*Terms and conditions apply.</p>
+
+    <div class="fsi-pricing-badges">
+      <span>45 Days Execution</span>
+      <span>10 Year Warranty</span>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="What we do"
+      title="Interior design services"
+      subtitle="From a single modular kitchen to a complete home, planned and executed as one project."
+    ></fsi-section-heading>
+
+    <div class="fsi-grid fsi-grid--4">
+      @for (service of sampleServices; track service.slug) {
+        <fsi-service-card [service]="service"></fsi-service-card>
+      }
+    </div>
+
+    <a routerLink="/services" class="fsi-section__more">View all services</a>
+  </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="fsi-section">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="Recent work"
+      title="Featured projects"
+      subtitle="A look at how these ideas play out in real homes and workplaces."
+    ></fsi-section-heading>
+
+    <div class="fsi-grid fsi-grid--3">
+      @for (project of sampleProjects; track project.slug) {
+        <fsi-project-card [project]="project"></fsi-project-card>
+      }
+    </div>
+
+    <a routerLink="/projects" class="fsi-section__more">View all projects</a>
+  </div>
+</section>
+
+<!-- Before & After teaser -->
+<section class="fsi-section fsi-section--dark">
+  <div class="fsi-container fsi-split">
+    <div>
+      <fsi-section-heading
+        eyebrow="Transformation"
+        title="Before & after"
+        subtitle="The same room, before a single decision was made and after every one of them was carried out."
+      ></fsi-section-heading>
+      <a routerLink="/before-after" class="fsi-button fsi-button--outline fsi-button--on-dark">
+        See the transformations
+      </a>
+    </div>
+    <div class="fsi-photo-placeholder fsi-photo-placeholder--tall">Before / After</div>
+  </div>
+</section>
+
+<!-- 3D Design -> Final Result -->
+<section class="fsi-section">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="From concept to reality"
+      title="3D design, then the real room"
+      subtitle="Every project is visualized in 3D before execution begins, so there are no surprises on site."
+    ></fsi-section-heading>
+
+    <div class="fsi-concept-flow">
+      <div class="fsi-photo-placeholder">3D Concept</div>
+      <div class="fsi-concept-flow__arrow" aria-hidden="true"></div>
+      <div class="fsi-photo-placeholder">Execution</div>
+      <div class="fsi-concept-flow__arrow" aria-hidden="true"></div>
+      <div class="fsi-photo-placeholder">Final Interior</div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="Why work with us"
+      title="What you can expect"
+    ></fsi-section-heading>
+
+    <div class="fsi-grid fsi-grid--4">
+      @for (item of whyChooseUs; track item.title) {
+        <div class="fsi-trust-card">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Process preview -->
+<section class="fsi-section">
+  <div class="fsi-container">
+    <fsi-section-heading
+      eyebrow="How it works"
+      title="Our process"
+      subtitle="Eleven steps from first conversation to handover — here are the first four."
+    ></fsi-section-heading>
+
+    <ol class="fsi-process-preview">
+      @for (item of processPreview; track item.step) {
+        <li>
+          <span class="fsi-process-preview__number">{{ item.step }}</span>
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+
+    <a routerLink="/process" class="fsi-section__more">See the full process</a>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="fsi-section fsi-section--paper">
+  <div class="fsi-container">
+    <fsi-section-heading eyebrow="Client feedback" title="What clients say"></fsi-section-heading>
+
+    <div class="fsi-grid fsi-grid--1">
+      @for (testimonial of sampleTestimonials; track testimonial.clientName) {
+        <fsi-testimonial-card [testimonial]="testimonial"></fsi-testimonial-card>
+      }
+    </div>
+
+    <a routerLink="/testimonials" class="fsi-section__more">Read more testimonials</a>
+  </div>
+</section>
+
+<!-- Consultation CTA -->
+<section class="fsi-cta-band">
+  <div class="fsi-cta-band__inner">
+    <h2>Have a space in mind?</h2>
+    <p>Tell us about it, and we'll get back to you with next steps.</p>
+    <a routerLink="/contact" class="fsi-button fsi-button--primary">Get Free Consultation</a>
+  </div>
+</section>

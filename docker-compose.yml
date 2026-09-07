@@ -1,0 +1,42 @@
+version: "3.9"
+
+# =========================================================
+# Frame Studio Interiors — SIMPLE SHOWCASE VERSION
+# One backend service, no gateway, no auth, no separate database
+# server. Compare to the full version's docker-compose.yml (5
+# services + Postgres) — this is the trimmed-down alternative.
+# =========================================================
+
+services:
+  contact-service:
+    build:
+      context: ./backend/contact-service
+    container_name: fsi-contact-service
+    restart: unless-stopped
+    environment:
+      SERVER_PORT: 8090
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:4200}
+      # LOCAL/TESTING ONLY — turn this off (false) before deploying
+      # anywhere public. See application.yml for details.
+      H2_CONSOLE_ENABLED: ${H2_CONSOLE_ENABLED:-true}
+      # Leave SMTP_* blank to skip email notifications entirely —
+      # enquiries are still saved either way.
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:-no-reply@framestudiointeriors.com}
+      NOTIFY_EMAIL: ${NOTIFY_EMAIL:-}
+    ports:
+      - "8090:8090"
+    volumes:
+      - fsi-contact-data:/app/data
+    networks:
+      - fsi-simple-network
+
+networks:
+  fsi-simple-network:
+    driver: bridge
+
+volumes:
+  fsi-contact-data:
